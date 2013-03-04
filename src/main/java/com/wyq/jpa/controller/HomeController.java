@@ -27,7 +27,7 @@ import com.wyq.jpa.service.LinkService;
 import com.wyq.jpa.util.Pager;
 
 /**
- * Sample controller for going to the home page with a message
+ * Sample controller for going to the home page with a message2
  */
 @Controller
 public class HomeController {
