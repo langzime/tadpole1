@@ -5,16 +5,38 @@
 <%@ taglib uri="http://jsptags.com/tags/navigation/pager" prefix="pg"%>
 
 <% pageContext.setAttribute("ctx",request.getContextPath());%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>${blog.name}</title>
-		<link rel="stylesheet" type="text/css" href="${ctx}/css/style.css" />
-		<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="xxx" />
-	</head>
-	<body>
-		<div id="container">
-			<div id="banner">
-				<h1><a href="${ctx}">${blog.name}</a></h1>
-			</div>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- Bootstrap -->
+<link href="${ctx}/css/bootstrap.css" rel="stylesheet">
+<link href="${ctx}/css/bootstrap-responsive.css" rel="stylesheet">
+</head>
+<body>
+<div class="navbar navbar-inverse">
+      <div class="navbar-inner">
+        <div class="container">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="#">${blog.name}</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="#">主页</a></li>
+              <li><a href="#about">博客</a></li>
+              <li><a href="#about">相册</a></li>
+              <li><a href="#contact">管理</a></li>
+              <li><a href="#"">关于</a></li>
+            </ul>
+            <form class="navbar-search pull-right">
+              <input class="text" type="search-query" placeholder="搜索">
+            </form>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>

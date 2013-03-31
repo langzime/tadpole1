@@ -38,10 +38,10 @@ public class HomeController {
 	/**
 	 * Selects the home page and populates the model with a message
 	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
+	@RequestMapping(value = {"/",""}, method = RequestMethod.GET)
 	public ModelAndView home(Integer cid,Integer page) {
 		logger.info("Welcome home!");
-		ModelAndView mav=new ModelAndView("home");
+		ModelAndView mav=new ModelAndView("index");
 		Blog blog=loadHeader(mav);
 		loadContent(mav, blog,cid, page);
 		loadFooter(mav);
