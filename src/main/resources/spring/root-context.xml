@@ -28,6 +28,12 @@
 				<property name="databasePlatform" value="${db.dialect}" />
 			</bean>
 		</property>
+		<!-- 实体自动生成表结构 -->
+               <!-- <property name="jpaProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">create</prop>
+            </props>
+        </property> -->
 		<property name="dataSource"  ref="dataSource" />
 	</bean>
 
