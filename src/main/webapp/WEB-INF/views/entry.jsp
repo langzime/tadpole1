@@ -1,56 +1,83 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
-<%String base=request.getContextPath();
-request.getSession().setAttribute("base", base); %>
-<%@include file="./header.jsp" %>
-			<div id="center">
-				<div class="content">					
-					<h2><fmt:formatDate value="${entry.createdTime}" pattern="yyyy年MM月dd日 "/></h2>
-					<div class="entry">
-						<h3>${entry.title}</h3>
-							${entry.content}
-							<p class="posted">
-							    <a href="#">阅读(${entry.hits})</a>
-								|<a href="#">评论(${entry.commentHit})</a>
-								|<a href="${ctx}/?cid=${entry.category.id}">${entry.category.name}</a>
-								|<fmt:formatDate value="${entry.createdTime}" pattern="HH:mm:ss"/>
-						</p>
-					</div>
-					<h2><a id="comments"></a>评论</h2>
-					<c:forEach items="${page.list}" var="c">										
-						<p class=posted>
-							<a href="mailto:${c.email}" target="_blank">${c.author}</a>
-							|<fmt:formatDate value="${c.createdTime}" pattern="yyyy年MM月dd日 HH:mm:ss"/>						
-						</p>
-						<p>${c.content}</p>
+<%@include file="./header.jsp"%>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span3">
+			<div class="well sidebar-nav">
+				<ul class="nav nav-list">
+					<li class="nav-header">分类</li>
+					<c:forEach items="${categorys}" var="c">
+						<li><a href="#">${c.name}</a></li>
+						<!-- <li class="active"><a href="#">Link</a></li> -->
 					</c:forEach>
-					<pg:pager url="${ctx}/toEntry/${entry.category.id}/${entry.id}" id="pagination" items="${page.maxElements}" maxPageItems="${page.pageSize}"  maxIndexPages="3">
-						<pg:index>
-							<pg:prev>
-								<a href="${pageUrl}&p=${pageNumber-1}">&lt;上一页</a>
-							</pg:prev>
-							<pg:pages>
-								<a href="${pageUrl}&p=${pageNumber-1}">${pageNumber}</a>				
-							</pg:pages>
-							<pg:next>
-								<a href="${pageUrl}&p=${pageNumber-1}">下一页&gt;</a>
-							</pg:next>
-						</pg:index>
-					</pg:pager>	
-      				<!--判断博文是否允许评论  -->			
-					<c:if test="${entry.allowComment==1}">
-						<!--判断评论是否需要审核  -->
-						<c:if test="${blog.commentAudit==1}">
-	       				  	 （评论需要审核）
-       					</c:if> 
-						<form action="${ctx}/saveComment" method="post">
-							<input type="hidden" name="entry.category.id" value="${entry.category.id}"/>
-							<input type="hidden" name="entry.id" value="${entry.id}" /><br/>
-							作者<input type="text" name="author"/><br/>
-							邮件<input type="text" name="email"/><br/>
-							内容<input type="text" name="content"/><br/>
-							<input type="submit" value="提交"/>
-						</form>
-					</c:if>
-				</div>				
+				</ul>
 			</div>
-<%@include file="./footer.jsp" %>
+			<div class="well sidebar-nav">
+				<ul class="nav nav-list">
+					<li class="nav-header">最近发表</li>
+					<c:forEach items="${recentEntrys}" var="c">
+						<li><a href="#">${c.title}</a></li>
+						<!-- <li class="active"><a href="#">Link</a></li> -->
+					</c:forEach>
+				</ul>
+			</div>
+			<div class="well sidebar-nav">
+				<ul class="nav nav-list">
+					<li class="nav-header">最新评论</li>
+					<c:forEach items="${recentComments}" var="c">
+						<li><a href="#">${c.content}</a></li>
+						<!-- <li class="active"><a href="#">Link</a></li> -->
+					</c:forEach>
+				</ul>
+			</div>
+			<div class="well sidebar-nav">
+				<ul class="nav nav-list">
+					<li class="nav-header">链接</li>
+					<c:forEach items="${links}" var="c">
+						<li><a href="#">${c.name}</a></li>
+						<!-- <li class="active"><a href="#">Link</a></li> -->
+					</c:forEach>
+				</ul>
+			</div>
+
+		</div>
+		<div class="span9">
+			<ul class="breadcrumb">
+				<li><a href="#">首页</a> <span class="divider">/</span></li>
+				<li><a href="#">Library</a> <span class="divider">/</span></li>
+				<li class="active">Data</li>
+			</ul>
+			<div>
+				<h2>${e.title}</h2>
+				<div>
+					作者：雾非雾的情思 分类：<a href="/catalog/catalog-28.html" rel="tag">${e.category.name}</a>&nbsp;&nbsp;
+					标签：<a href="/tag/tag-37.html" rel="tag">${e.category.name}</a>&nbsp;&nbsp;
+					时间：
+					<fmt:formatDate value="${e.createdTime}" pattern="yyyy:MM:dd HH:mm:ss " />
+					点击量：${e.hits} 转载自：道哥的黑板报
+					</div>
+					<br>
+					<p>${e.content}</p>
+				<hr>
+			</div>
+			<%-- <c:if test="${page.pageSize<fn:length(list)}">
+			<div class="pagination pull-right">
+				<ul>
+					<li><a href="#">上一页</a></li>
+					<li><a class="active" href="#">1</a></li>
+					<li><a href="#">2</a></li>
+					<li><a href="#">3</a></li>
+					<li><a href="#">4</a></li>
+					<li><a href="#">5</a></li>
+					<li><a href="#">下一页</a></li>
+				</ul>
+			</div>
+			</c:if> --%>
+		</div>
+	</div>
+	<hr>
+	<footer>
+		<p>&copy; 公司 2013</p>
+	</footer>
+</div>
+<%@include file="./footer.jsp"%>

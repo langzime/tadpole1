@@ -2,7 +2,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<%@ taglib uri="http://jsptags.com/tags/navigation/pager" prefix="pg"%>
 
 <% pageContext.setAttribute("ctx",request.getContextPath());%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -11,9 +10,9 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<title>${blog.name}</title>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<!-- Bootstrap -->
-<link href="${ctx}/css/bootstrap.css" rel="stylesheet">
-<link href="${ctx}/css/bootstrap-responsive.css" rel="stylesheet">
+	<!-- Bootstrap -->
+	<link href="${ctx}/css/bootstrap.css" rel="stylesheet">
+	<link href="${ctx}/css/bootstrap-responsive.css" rel="stylesheet">
 </head>
 <body>
 <div class="navbar navbar-inverse">
