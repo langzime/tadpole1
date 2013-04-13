@@ -7,7 +7,7 @@
 				<ul class="nav nav-list">
 					<li class="nav-header">分类</li>
 					<c:forEach items="${categorys}" var="c">
-						<li><a href="#">${c.name}</a></li>
+						<li><a href="${ctx}/?cid=${c.id}">${c.name}</a></li>
 						<!-- <li class="active"><a href="#">Link</a></li> -->
 					</c:forEach>
 				</ul>
@@ -42,11 +42,13 @@
 
 		</div>
 		<div class="span9">
-			<!-- <ul class="breadcrumb">
+			<c:if test="${page.cid!=-1}">
+			<ul class="breadcrumb">
 				<li><a href="#">首页</a> <span class="divider">/</span></li>
 				<li><a href="#">Library</a> <span class="divider">/</span></li>
 				<li class="active">Data</li>
-			</ul> -->
+			</ul>
+			</c:if>
 			<c:forEach items="${page.list}" var="e">
 				<div>
 					<h2>${e.title}</h2>
@@ -69,13 +71,13 @@
 			<c:if test="${page.pageSize<page.maxElements}">
 			<div class="pagination pull-right">
 				<ul>
-					<li><a href="${ctx}/?page=${page.pageNumber-1}">上一页</a></li>
-					<li><a class="active" href="${ctx}/?page=${page.pageNumber}">${page.pageNumber}</a></li>
-					<li><a href="${ctx}/?page=${page.pageNumber+1}">${page.pageNumber+1}</a></li>
-					<li><a href="${ctx}/?page=${page.pageNumber+2}">${page.pageNumber+2}</a></li>
-					<li><a href="${ctx}/?page=${page.pageNumber+3}">${page.pageNumber+3}</a></li>
-					<li><a href="${ctx}/?page=${page.pageNumber+4}">${page.pageNumber+4}</a></li>
-					<li><a href="${ctx}/?page=${page.pageNumber+1}">下一页</a></li>
+					<li><a href="${ctx}/?page=${page.pageNumber-1}">Prev</a></li>
+					<li class="active"><a href="${ctx}/?page=${page.pageNumber}">${page.pageNumber+1}</a></li>
+					<li><a href="${ctx}/?page=${page.pageNumber+1}">${page.pageNumber+1+1}</a></li>
+					<li><a href="${ctx}/?page=${page.pageNumber+2}">${page.pageNumber+2+1}</a></li>
+					<li><a href="${ctx}/?page=${page.pageNumber+3}">${page.pageNumber+3+1}</a></li>
+					<li><a href="${ctx}/?page=${page.pageNumber+4}">${page.pageNumber+4+1}</a></li>
+					<li><a href="${ctx}/?page=${page.pageNumber+1}">Next</a></li>
 				</ul>
 			</div>
 			</c:if>

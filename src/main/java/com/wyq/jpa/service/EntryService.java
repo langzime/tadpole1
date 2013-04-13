@@ -26,12 +26,12 @@ public class EntryService {
 	
 	public Pager getPager(int cid,int page,int size){
 		Pager pager=new Pager();
-		Page<Entry> pages=getPage(cid,page, size);
-		pager.setList(pages.getContent());
-		pager.setMaxElments((int)pages.getTotalElements());
-		pager.setPageNumber(pages.getNumber());
-		pager.setCid(cid);
 		pager.setPageSize(size);
+		pager.setMaxElments(entryDao.findAll().size());
+		pager.setPageNumber(page);
+		Page<Entry> pages=getPage(cid,pager.getPageNumber(), size);
+		pager.setList(pages.getContent());
+		pager.setCid(cid);
 		return pager;
 	}
 	public Page<Entry> getPage(final int cid,int page,int size){
