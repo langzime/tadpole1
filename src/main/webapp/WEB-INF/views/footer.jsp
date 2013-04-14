@@ -1,4 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"%>
+	</div>
+	</div>
+	<hr>
+	<footer>
+		<p>&copy; 公司 2013</p>
+	</footer>
 	<!-- Placed at the end of the document so the pages load faster -->
     <script src="${ctx}/js/jquery.js"></script>
     <script src="${ctx}/js/bootstrap-transition.js"></script>

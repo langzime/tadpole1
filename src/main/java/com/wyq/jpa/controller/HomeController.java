@@ -71,7 +71,7 @@ public class HomeController {
 		}
 		Blog blog=loadHeader(mav);
 		Entry entry=entryService.getEntryById(eid);
-		mav.addObject("entry", entry);
+		mav.addObject("e", entry);
 		Pager page=commentService.getPager(eid, p, blog.getBackendCommentSize());
 		mav.addObject("page", page);
 		loadFooter(mav);
@@ -111,6 +111,8 @@ public class HomeController {
 		}
 		if(cid==null||cid<0){
 			cid=-1;
+		}else{
+			mav.addObject("cname", categoryService.getCategoryById(cid).getName());
 		}
 		// 加载文章信息
 		Pager pager = entryService.getPager(cid,page, blog.getBackendPageSize());

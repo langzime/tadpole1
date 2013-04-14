@@ -23,7 +23,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="brand" href="#">${blog.name}</a>
+          <a class="brand" href="${ctx}/">${blog.name}</a>
           <div class="nav-collapse collapse">
             <ul class="nav">
               <li class="active"><a href="#">主页</a></li>
@@ -39,3 +39,44 @@
         </div>
       </div>
     </div>
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="span3">
+			<div class="well sidebar-nav">
+				<ul class="nav nav-list">
+					<li class="nav-header">分类</li>
+					<c:forEach items="${categorys}" var="c">
+						<li><a href="${ctx}/?cid=${c.id}">${c.name}</a></li>
+						<!-- <li class="active"><a href="#">Link</a></li> -->
+					</c:forEach>
+				</ul>
+			</div>
+			<div class="well sidebar-nav">
+				<ul class="nav nav-list">
+					<li class="nav-header">最近发表</li>
+					<c:forEach items="${recentEntrys}" var="e">
+						<li><a href="${ctx}/toEntry/${e.category.id}/${e.id}">${e.title}</a></li>
+						<!-- <li class="active"><a href="#">Link</a></li> -->
+					</c:forEach>
+				</ul>
+			</div>
+			<div class="well sidebar-nav">
+				<ul class="nav nav-list">
+					<li class="nav-header">最新评论</li>
+					<c:forEach items="${recentComments}" var="c">
+						<li><a href="#">${c.content}</a></li>
+						<!-- <li class="active"><a href="#">Link</a></li> -->
+					</c:forEach>
+				</ul>
+			</div>
+			<div class="well sidebar-nav">
+				<ul class="nav nav-list">
+					<li class="nav-header">链接</li>
+					<c:forEach items="${links}" var="c">
+						<li><a href="${c.url}">${c.name}</a></li>
+						<!-- <li class="active"><a href="#">Link</a></li> -->
+					</c:forEach>
+				</ul>
+			</div>
+
+		</div>
