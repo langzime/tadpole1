@@ -17,7 +17,6 @@
 					</div>
 					<br>
 					<p>${e.content}</p>
-				<!-- <hr> -->
 			</div>
 			<div class="row-fluid">
 					<div class="well span4">
@@ -32,5 +31,31 @@
   					欢迎大家的光临！！！！！！！！！！！！！！！
 				</div>
 			</div>
+			<hr>
+			<form>
+  				<div class="control-group">
+    				<label class="control-label" for="inputEmail">邮箱</label>
+    				<div class="controls">
+     					 <input type="text" id="inputEmail" placeholder="邮箱">
+   				 	</div>
+ 				</div>
+  				<div class="control-group">
+   					 <label class="control-label" for="inputAuthor">作者</label>
+    				 <div class="controls">
+      					<input type="text" id="inputAuthor" placeholder="作者">
+    				</div>
+  				</div>
+  				<div class="control-group">
+  					<label class="control-label" for="textarea">内容</label>
+  					<div class="controls">
+  						<textarea rows="3"></textarea>
+  					</div>
+  				</div>
+  				 <div class="control-group">
+    				<div class="controls">
+      					<button type="submit" class="btn  btn-primary">提交</button>
+    				</div>
+  				</div>
+			</form>
 		</div>
 <%@include file="./footer.jsp"%>
