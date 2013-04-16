@@ -17,7 +17,20 @@
 					</div>
 					<br>
 					<p>${e.content}</p>
-				<hr>
+				<!-- <hr> -->
+			</div>
+			<div class="row-fluid">
+					<div class="well span4">
+					欢迎大家的光临！！！！！！！！！！！！！！！
+					</div>
+					<div class="well span5">
+					欢迎大家的光临！！！！！！！！！！！！！！！
+					</div>
+			</div>
+			<div class="row-fluid">
+				<div class="span9 alert alert-info">
+  					欢迎大家的光临！！！！！！！！！！！！！！！
+				</div>
 			</div>
 		</div>
 <%@include file="./footer.jsp"%>
