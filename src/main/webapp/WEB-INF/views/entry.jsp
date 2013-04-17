@@ -20,35 +20,44 @@
 			</div>
 			<div class="row-fluid">
 					<div class="well span4">
-					欢迎大家的光临！！！！！！！！！！！！！！！
+					相关文章
 					</div>
 					<div class="well span5">
-					欢迎大家的光临！！！！！！！！！！！！！！！
+					随机文章
 					</div>
 			</div>
 			<div class="row-fluid">
-				<div class="span9 alert alert-info">
-  					欢迎大家的光临！！！！！！！！！！！！！！！
+				<div class="span9 alert alert-error">
+  					欢迎光临
 				</div>
 			</div>
 			<hr>
-			<form>
+			<c:if test="${e.allowComment==1}">
+				<!--判断评论是否需要审核  -->
+				<c:if test="${blog.commentAudit==1}">
+					<div class="alert">
+					（评论需要审核）
+					</div>
+       			</c:if>
+       			<form action="${ctx}/saveComment" method="post">
+       			<input type="hidden" name="entry.category.id" value="${e.category.id}"/>
+				<input type="hidden" name="entry.id" value="${e.id}" /><br/>
   				<div class="control-group">
     				<label class="control-label" for="inputEmail">邮箱</label>
     				<div class="controls">
-     					 <input type="text" id="inputEmail" placeholder="邮箱">
+     					 <input type="text" name="email" id="inputEmail" placeholder="邮箱">
    				 	</div>
  				</div>
   				<div class="control-group">
    					 <label class="control-label" for="inputAuthor">作者</label>
     				 <div class="controls">
-      					<input type="text" id="inputAuthor" placeholder="作者">
+      					<input type="text" name="author" id="inputAuthor" placeholder="作者">
     				</div>
   				</div>
   				<div class="control-group">
-  					<label class="control-label" for="textarea">内容</label>
+  					<label class="control-label"  for="textarea">内容</label>
   					<div class="controls">
-  						<textarea rows="3"></textarea>
+  						<textarea name="content" rows="3"></textarea>
   					</div>
   				</div>
   				 <div class="control-group">
@@ -57,5 +66,6 @@
     				</div>
   				</div>
 			</form>
+			</c:if>
 		</div>
 <%@include file="./footer.jsp"%>
